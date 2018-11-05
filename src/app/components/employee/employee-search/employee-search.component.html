@@ -1,0 +1,58 @@
+<div class="search">
+  <form class="form-inline md-form form-sm mt-0" #searchEmployeeForm=ngForm
+        (ngSubmit)="searchEmployee(searchEmployeeForm)" >
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input class="form-control form-control-sm ml-3 w-75" type="text" [(ngModel)]="searchName"
+           placeholder="Search" name="search" id="name" aria-label="Search">
+    <button type="submit" class="btn btn-outline-primary" id="btnSearch">Search</button>
+  </form>
+</div>
+<div *ngIf="totalElements !=0 ">
+  <div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Active</th>
+        <th>Department Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employees">
+        <td><a routerLink="/employee/{{employee.id}}">{{employee.name}}</a></td>
+        <td>{{employee.active}}</td>
+        <td>{{employee.departmentName}}</td>
+        <td>
+          <button type="button" routerLink="/employee-edit/{{employee.id}}"
+                  class="btn btn-outline-primary">Edit
+          </button>
+        </td>
+        <td>
+          <button type="button" routerLink="/employee-delete/{{employee.id}}"
+                  class="btn btn-outline-danger">Delete
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <app-pagination
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      [pagesToPagination]="pagesToPagination"
+      (goFirst)="onFirst($event)"
+      (goPrev)="onPrev()"
+      (goNext)="onNext()"
+      (goLast)="onLast($event)"
+      (goPage)="goToPage($event)">
+    </app-pagination>
+  </div>
+</div>
+
+<div id="notFound" *ngIf="totalElements ==0 ">
+  <h1>  Not Found</h1>
+</div>
+
+
+

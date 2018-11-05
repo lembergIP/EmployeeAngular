@@ -1,0 +1,27 @@
+#menucard{
+  height: auto;
+  width: 750px;
+  border: 1px solid silver;
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#activeLabel{
+  margin-left: 13px;
+}
+.btn-outline-danger{
+  margin-left: 73%;
+  width: 150px;
+}
+
+strong{
+  margin-left: 25px;
+}
+.row{
+  margin-left: 3px;
+}
+h4{
+  margin-left: 35%;
+}
